@@ -54,9 +54,9 @@ storage.backend=berkeleyje storage.directory=/tmp/graph index.search.backend=ela
 
 // Connect to Cassandra on localhost using a default configuration
 
- graph = JanusGraphFactory.open\("conf/janusgraph-cassandra.properties"\) 
+graph = JanusGraphFactory.open\("conf/janusgraph-cassandra.properties"\)
 
 // Connect to HBase on localhost using a default configuration
 
- graph = JanusGraphFactory.open\("conf/janusgraph-hbase.properties"\)
+graph = JanusGraphFactory.open\("conf/janusgraph-hbase.properties"\)
 
