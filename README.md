@@ -1,4 +1,4 @@
 # 文档介绍
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
+本文档依据官方文档翻译，仅用于开源分享，不用于商业行为。
 
