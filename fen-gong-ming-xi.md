@@ -8,13 +8,13 @@ I. Introduction
 
 II. JanusGraph Basics
 
-1. Configuration
+1. Configuration	[CalicoBox,2018-03-15]
 
-2. Schema and Data Modeling
+2. Schema and Data Modeling	[CalicoBox,2018-03-15]
 
-3. Gremlin Query Language
+3. Gremlin Query Language	[CalicoBox,2018-03-15]
 
-4. JanusGraph Server
+4. JanusGraph Server	[CalicoBox,2018-03-15]
 
 5. ConfiguredGraphFactory
 
@@ -30,7 +30,7 @@ II. JanusGraph Basics
 
 11. Common Questions
 
-12. Technical Limitations
+12. Technical Limitations	[CalicoBox,2018-03-15]
 
 III. Storage Backends
 
