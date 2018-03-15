@@ -18,11 +18,11 @@ II. JanusGraph Basics
 15. Technical Limitations	[CalicoBox, 2018-03-15]
 
 III. Storage Backends
-16. Apache Cassandra
-17. Apache HBase
-18. Google Cloud Bigtable
-19. Oracle Berkeley DB Java Edition
-20. InMemory Storage Backend
+16. Apache Cassandra [Astroleander, 2018-03-15]
+17. Apache HBase [Astroleander, 2018-03-15]
+18. Google Cloud Bigtable [Astroleander, 2018-03-15]
+19. Oracle Berkeley DB Java Edition [Astroleander, 2018-03-15]
+20. InMemory Storage Backend [Astroleander, 2018-03-15]
 
 IV. Index Backends
 21. Search Predicates and Data Types
@@ -60,6 +60,3 @@ VIII. Appendices
 	B. Version Compatibility
 	C. Release Notes
 	D. Upgrade Instructions
-
-
-
