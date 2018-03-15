@@ -9,7 +9,7 @@
 ## 正文
 
 * [I. Introduction](zheng-wen/i-introduction.md)
-* [II. JanusGraph Basics](zheng-wen/er-3001-ji-chu-zhi-shi.md)
+* [II. JanusGraph Basics](zheng-wen/ii-janusgraph-basics)
 * [III. Storage Backends](zheng-wen/iii-storage-backends.md)
 * [IV. Index Backends](zheng-wen/iv-index-backends.md)
 * [V. Advanced Topics](zheng-wen/v-advanced-topics.md)
