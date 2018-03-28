@@ -6,12 +6,12 @@
 16.3. 集成 Gremlin Server 的远端服务器模式
 16.4. JanusGraph 嵌入模式
 16.5. Cassandra 的特殊配置
-16.6. 全局 Graph 操作
+16.6. 全局图表操作
 16.7. 在 Amazon EC2 上部署
 17. Apache HBase
 17.1. 在 HBase 上安装
 17.2. 在 HBase 的特殊配置
-17.3. 全局 Graph 操作
+17.3. 全局图表操作
 17.4. 在 Amazon EC2 上部署
 17.5. 管理 HBase 集群的小技巧
 18. Google Cloud Bigtable
@@ -20,7 +20,7 @@
 19.1. 在 BerkeleyDB JE 上安装
 19.2. 在 BerkeleyDB 的特殊配置
 19.3. 理想用例
-19.4. 全局 Graph 操作
+19.4. 全局图表操作
 20. InMemory Storage Backend
 20.1. 理想用例
 
