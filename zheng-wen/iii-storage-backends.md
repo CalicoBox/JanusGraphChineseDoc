@@ -2,8 +2,8 @@
 
 16. Apache Cassandra
 16.1. 本地服务器模式
-16.2. 远端服务器模式
-16.3. 集成 Gremlin Server 的远端服务器模式
+16.2. 远程服务器模式
+16.3. 使用 Gremlin Server 的远程服务器模式
 16.4. JanusGraph 嵌入模式
 16.5. Cassandra 的特殊配置
 16.6. 全局图表操作
