@@ -25,7 +25,7 @@ set("storage.backend","cassandra").
 set("storage.hostname","127.0.0.1").
 open();
 ```
-在 Gremlin 控制台中，你无法定义变量 `conf` 和 `g`。简单地放弃声明类型即可。
+在 Gremlin 控制台中，你无法定义变量 `conf` 和 `g`的类型。简单地放弃声明类型即可。
 
 ## 16.2. 远程服务器模式
 ![modes-distributed](http://docs.janusgraph.org/latest/images/modes-distributed.png)
