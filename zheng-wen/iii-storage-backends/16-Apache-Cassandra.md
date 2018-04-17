@@ -1,7 +1,7 @@
 # 16. Apache Cassandra
 
 > 当需要可扩展性、高度可靠性和毫不妥协的性能时，Apache Cassandra 是您正确的选择。线性增长的可扩展性与在商业级硬件与云端设备上经过验证的容错性使之成为处理关键任务的数据的绝佳平台。Cassandra 对于跨多个数据中心备份的支持是同类数据库中最好的，Cassandra 为您的用户提供更低的延迟，并且可以在地区性停电事故安然存活。已知最大的 Cassandra 集群在超过 400 台机器中拥有超过 300 TB 的数据。
-> -- [Apache Cassandra 主页](http://cassandra.apache.org/)
+> -- [Apache Cassandra 主页][apache-cassandra]
 
 接下来的各小节概述了 JanusGraph 与 Apache Cassandra 共同使用的各种可行方式。
 
@@ -15,7 +15,7 @@
 ## 16.1. 本地服务器模式
 ![modes-local](http://docs.janusgraph.org/latest/images/modes-local.png)
 Cassandra 可以作为一个独立的数据库，与 JanusGraph 和最终用户应用程序跑在同一台主机上。在这种模式下，JanusGraph 和 Cassandra 通过一个 `localhost` 接口彼此沟通。遵循如下步骤即可在 Cassandra 之上运行 JanusGraph:
-1. [下载 Cassandra](http://cassandra.apache.org/download/) 并解压，并在 `conf/cassandra.yaml` 和 `conf/log4j-server.properties` 中设置文件系统路径。
+1. [下载 Cassandra][apache-cassandra-download] 并解压，并在 `conf/cassandra.yaml` 和 `conf/log4j-server.properties` 中设置文件系统路径。
 2. 在 Cassandra 的解压路径下进行命令行调用 `bin/cassandra -f` 来启动 Cassandra。读取输出以检查 Cassandra 是否成功启动。
 现在，你可以像下面这样创建一个 Cassandra JanusGraph 实例:
 
@@ -25,7 +25,7 @@ set("storage.backend","cassandra").
 set("storage.hostname","127.0.0.1").
 open();
 ```
-在 Gremlin 控制台中，你无法定义变量 `conf` 和 `g`。简单地放弃声明类型即可。
+在 Gremlin 控制台中，你无法定义变量 `conf` 和 `g`的类型。简单地放弃声明类型即可。
 
 ## 16.2. 远程服务器模式
 ![modes-distributed](http://docs.janusgraph.org/latest/images/modes-distributed.png)
@@ -52,7 +52,7 @@ Gremlin 服务器可以包裹在任一如上一小节定义的 JanusGraph 之外
 :> g.addV()
 ```
 
-在这种情况下，每个 Gremlin 服务器都将配置为连接到 Cassandra 群集。下面显示了 Gremlin 服务器特定图片段的配置。有关如何配置服务器的完整示例和更多信息，请参阅 [7. JanusGraph Server](.\ii-janusgraph-basics\7-janusgraph-server.md)。
+在这种情况下，每个 Gremlin 服务器都将配置为连接到 Cassandra 群集。下面展示了 Gremlin 服务器上对图进行特殊配置的片段。有关如何配置服务器的完整示例和更多信息，请参阅 [7. JanusGraph Server][7]。
 
 ```
 ...
@@ -63,7 +63,7 @@ plugins:
 ...
 ```
 
-更多关于 Gremlin 服务器的信息参见 [Apache TinkerPop documentation](http://tinkerpop.apache.org/docs/3.2.6/reference#gremlin-server)
+更多关于 Gremlin 服务器的信息参见 [Apache TinkerPop documentation][apache-tinkerpop]
 
 ## 16.4. JanusGraph 嵌入模式
 ![modes-embedded](http://docs.janusgraph.org/latest/images/modes-embedded.png)
@@ -76,7 +76,7 @@ plugins:
 注意， 运行包含嵌入 JanusGraph 的 Cassandra 服务需要对 GC 调整。 虽然嵌入模式下的 Cassandra 查询应答更低，但是 GC 的行为将会更加不可预测。
 
 ## 16.5. Cassandra 的特殊配置
-参阅 [13. 配置参考](./ii-janusgraph-basics/13-config-ref.md)，以获取包含 Cassandra 限定配置在内的所有的 JanusGraph 配置的完整列表。
+参阅 [13. 配置参考][13]，以获取包含所有 Cassandra 限定配置在内的全部 JanusGraph 配置的完整列表。
 
 在配置 Cassandra 时，建议考虑以下 Cassandra 特定的配置选项:
 
@@ -86,14 +86,14 @@ plugins:
 + **thrift.frame_size_mb:** 使用 thrift 传输帧的最大个数。在检索非常大的结果集时增加此值。**只在 `storage.backend=cassandrathrift` 时生效。
 + **keyspace:** 用于存储 JanusGraph 图的键空间的名称。同一个 Cassandra 集群中允许多个JanusGraph图形共存。
 
-有关 Cassandra 一致性级别和可接受值的更多信息，请参阅 [Cassandra Thrift API](http://wiki.apache.org/cassandra/API10)。通常来说，越高级别的一致性越高，健壮性也越高，但是同时有更高的延迟。
+有关 Cassandra 一致性级别和可接受值的更多信息，请参阅 [Cassandra Thrift API][apache-cassandra-docs]。通常来说，越高级别的一致性越高，健壮性也越高，但是同时有更高的延迟。
 
 ## 16.6. 全局图操作
-JanusGraph 在 Cassandra 上支持全局顶点和边迭代。但是，请注意，所有这些顶点和/或边将被加载到内存中，这可能会导致 `OutOfMemoryException`。使用 [35. JanusGraph with TinkPop's Hadoop-Gremlin](35-janusgraph-with-tinkpops-hadoop-gremlin) 来在大型图中高效遍历所有的顶点和边。
+JanusGraph 在 Cassandra 上支持全局顶点和边迭代。但是，请注意，所有这些顶点和/或边将被加载到内存中，这可能会导致 `OutOfMemoryException`。使用 [35. JanusGraph with TinkPop's Hadoop-Gremlin][35] 来在大型图中高效遍历所有的顶点和边。
 
 ## 16.7. 在 Amazon EC2 上部署
 > Amazon Elastic Compute Cloud (Amazon EC2) 是一款提供在云上弹性计算容量的 web 服务，它旨在让开发人员更轻松地进行网络计算。
-> --[Amazon EC2](http://aws.amazon.com/ec2/)
+> --[Amazon EC2][amazon-ec2]
 
 按照以下步骤在 EC2 上设置 Cassandra 集群，并在 Cassandra 上部署 JanusGraph。在此之前，您需要一个建好身份认证凭证的 Amazon AWS 账号和一些 AWS 和 EC2 的基础知识。
 
@@ -107,7 +107,7 @@ JanusGraph 在 Cassandra 上支持全局顶点和边迭代。但是，请注意�
 > 小提示：一旦「sg」输入框中，「Source」下拉菜单将自动填充安全组标识符，因此您无需事先准备好准确的值。
 
 ### 16.7.3. 启动 DataStax Cassandra AMI
-+ 在您希望的区域内启动 [DataStax AMI](https://aws.amazon.com/amis/datastax-auto-clustering-ami-2-2)
++ 在您希望的区域内启动 [DataStax AMI][amazon-ami]
 + 在「Request Instances Wizard」的「Instance Details」页中，将「Number of Instances」设置为所需数量的 Cassandra 节点。将「Instance Type」设置为「at least m1.large」。推荐设置为「m1.large」。
 + 在「Advanced Instance Options」的「Advanced Instance Options」页中，设置「User Data」单选按钮为「as text」，然后在文本框中输入:
 ```
@@ -141,16 +141,16 @@ JanusGraph 在 Cassandra 上支持全局顶点和边迭代。但是，请注意�
 启动额外的 EC2 实例来运行 JanusGraph，如上文所述，这些实例既可以在远程服务器模式下配置，也可以在 Gremlin-Server 中配置为远程服务器模式。您只需记下其中一个 Cassandra 群集实例的 IP 地址并将其配置为主机名(host)。要运行特定的 EC2 实例和特定配置取决于您的用例。
 
 ### 16.7.6. 在 Amazon Linux AMI 上部署 JanusGraph 实例的示例
-+ 在 Cassandra 集群的同一域中启动 [Amazon Linux AMI](http://aws.amazon.com/amazon-linux-ami)。根据您需要的资源选择您喜欢的 EC2 实例类型。使用默认配置，并选择和先前配置的 Cassandra 集群相同的密钥对和安全组。
++ 在 Cassandra 集群的同一域中启动 [Amazon Linux AMI](amazon-ami-linux)。根据您需要的资源选择您喜欢的 EC2 实例类型。使用默认配置，并选择和先前配置的 Cassandra 集群相同的密钥对和安全组。
 + 使用 `ssh -i [your-private-key] .pem ec2-user @ [public-dns-name-of-the-instance]` ssh 进入新创建的实例。您可能必须得等待一小会儿实例启动。
-+ 使用 wget [下载](https://github.com/JanusGraph/janusgraph/releases) 当前 JanusGraph 的发行版，并将文档本地解压到主目录。启动 Gremlin 控制台以验证 JanusGraph 成功运行。有关如何解压 JanusGraph 并启动 Gremlin 控制台的更多信息，请参阅[入门指南](http://docs.janusgraph.org/latest/getting-started.html).
++ 使用 wget [下载][download] 当前 JanusGraph 的发行版，并将文档本地解压到主目录。启动 Gremlin 控制台以验证 JanusGraph 成功运行。有关如何解压 JanusGraph 并启动 Gremlin 控制台的更多信息，请参阅[入门指南][getting-start].
 + 使用 `vi janusgraph.properties` 创建配置文件并添加如下行:
   ```yaml
   storage.backend = cassandra
   storage.hostname = [IP-address-of-one-Cassandra-EC2-instance]
   ```
 
-也许你需要添加此页面或 (13. Configuration Reference)[13-configuration-reference] 中额外的配置选项。
+也许你需要添加此页面或 [13. Configuration Reference][13] 中额外的配置选项。
 
 + 再次启动 Gremlin Console 并且输入下面的内容:
   ```yaml
@@ -166,3 +166,16 @@ JanusGraph 在 Cassandra 上支持全局顶点和边迭代。但是，请注意�
 修复方法是，为每个实例在 /etc/cassandra/cassandra.yaml 中设置「boardcast-address」属性， 然后重启实例。为集群每个实例重复这个步骤。一旦集群回应，nodetool 会报告允许来自本地机器的连接的正确的公网 IP。
 
 修改 「boardcast-address」属性使您可以从 EC2 外部访问集群，但这也可能意味着 EC2 内产生的流量必须往返于互联网并在其获得集群前返回。所以，这种方法通常只对开发和测试有用。
+
+[apache-cassandra]:http://cassandra.apache.org/
+[apache-cassandra-download]:http://cassandra.apache.org/download/
+[apache-cassandra-docs]:http://wiki.apache.org/cassandra/API10
+[apache-tinkerpop]:http://tinkerpop.apache.org/docs/3.2.6/reference#gremlin-server
+[amazon-ec2]:http://aws.amazon.com/ec2/
+[amazon-ami]:https://aws.amazon.com/amis/datastax-auto-clustering-ami-2-2
+[amazon-ami-linux]:http://aws.amazon.com/amazon-linux-ami
+[download]:https://github.com/JanusGraph/janusgraph/releases
+[getting-start]:http://docs.janusgraph.org/latest/getting-started.html
+[7]:./ii-janusgraph-basics/7-janusgraph-server.md
+[13]:./ii-janusgraph-basics/13-config-ref.md
+[35]:./v-advanced-topics/35-janusgraph-with-tinkpops-hadoop-gremlin
