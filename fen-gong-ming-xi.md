@@ -25,7 +25,7 @@ III. Storage Backends
 20. InMemory Storage Backend [Astroleander, 2018-03-15]
 
 IV. Index Backends
-21. Search Predicates and Data Types
+21. Search Predicates and Data Types [Astroleander, 2018-06-04]
 22. Index Parameters and Full-Text Search
 23. Field Mapping
 24. Direct Index Query
