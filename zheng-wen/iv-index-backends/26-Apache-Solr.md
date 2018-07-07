@@ -117,7 +117,7 @@ mgmt.buildIndex("verticesByAge", Vertex.class).addKey(age).buildMixedIndex("sear
 mgmt.commit()
 ```
 
-## 26.4 Solr 架构设计
+## 26.4 Solr 模式设计
 ### 26.4.1 动态字段定义
 JanusGraph 默认使用 Solr 的 [Dynamic Fields](https://cwiki.apache.org/confluence/display/solr/Dynamic+Fields) 来定义所有索引键的字段类型。属性键添加到 Solr 支持的混合索引时，这不需要额外的配置，并且提供比无模式模式(Schemaless mode)更好的性能。
 
@@ -138,7 +138,7 @@ JanusGraph 假设在后端 Solr 集合的 schema.xml 文件中定义了如下动
 利用Solr的动态字段功能，在 JanusGraph 的默认配置中，属性键名称不必以类型相应的后缀结束。JanusGraph 通过对属性键定义的数字标识符和类型相应的后缀进行编码，从属性键名生成 Solr 字段名称。这意味着 JanusGraph 在后台使用带有类型相应后缀的合成的字段名，而不管 JanusGraph 应用里定义和使用的属性键的名称。可以通过非默认配置来覆盖此字段名称的映射，在下一节中将进行描述。
 
 ### 26.4.2. 手动字段定义
-如果用户更喜欢手动定义集合中的每个索引字段，那么需要禁用配置选项 `dyn-fields`。在将属性键添加到索引之前，必须保证后盾每一个 Solr 架构属性键已经定义。
+如果用户更喜欢手动定义集合中的每个索引字段，那么需要禁用配置选项 `dyn-fields`。在将属性键添加到索引之前，必须保证后端每一个 Solr 模式的属性键已经定义。
 
 使用此方案时，建议在名称到字段映射启用显式属性键，用显式定义以便修复字段名。这可以通过以下两种方式之一实现：
 

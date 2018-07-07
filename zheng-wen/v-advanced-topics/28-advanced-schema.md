@@ -1,5 +1,5 @@
-# 28. 高级架构
-本页介绍了一些 JanusGraph 提供的高级架构定义设置项。有关 JanusGraph 一般架构以及如何定义一般架构的更多信息，参考[5. 架构和数据模型](https://docs.janusgraph.org/latest/schema.html)。
+# 28. 高级模式
+本页介绍了一些 JanusGraph 提供的高级模式定义设置项。有关 JanusGraph 一般模式以及如何定义一般模式的更多信息，参考[5. 模式和数据模型](https://docs.janusgraph.org/latest/schema.html)。
 
 ## 28.1. 静态顶点
 顶点标签可以定义为 **静态**，意思是具有该标签的顶点除了创建它们的事务之外，其它事务无法进行对它们修改。
@@ -41,7 +41,7 @@ mgmt.commit()
 此外还要注意， 点标签的 TTL 是可修改的， 但是这需要一些时间将该更改传播到所有的 JanusGraph 实例上，这可能导致对于同一个标签，短时间内有两个不同的可用 TTL 的情况。
 
 ## 28.3. 多重属性
-如同 [第5章，架构和数据模型](https://docs.janusgraph.org/latest/schema.html) 中所述，JanusGraph 支持使用 SET 和 LIST 基数的属性键。因此，JanusGraph 支持单个顶点的单键上有多重属性。除此之外，同 JanusGraph 处理边相似，在处理属性时允许在属性上使用单值属性注解。如下示例所示：
+如同 [第5章，模式和数据模型](https://docs.janusgraph.org/latest/schema.html) 中所述，JanusGraph 支持使用 SET 和 LIST 基数的属性键。因此，JanusGraph 支持单个顶点的单键上有多重属性。除此之外，同 JanusGraph 处理边相似，在处理属性时允许在属性上使用单值属性注解。如下示例所示：
 ```java
 mgmt = graph.openManagement()
 mgmt.makePropertyKey('name').dataType(String.class).cardinality(Cardinality.LIST).make()
