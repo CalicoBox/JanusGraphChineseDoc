@@ -26,15 +26,15 @@ III. Storage Backends
 
 IV. Index Backends
 21. Search Predicates and Data Types [Astroleander, 2018-06-04]
-22. Index Parameters and Full-Text Search
-23. Field Mapping
-24. Direct Index Query
-25. Elasticsearch
-26. Apache Solr
-27. Apache Lucene
+22. Index Parameters and Full-Text Search [Astroleander, 2018-07-09]
+23. Field Mapping [Astroleander, 2018-07-09]
+24. Direct Index Query [Astroleander, 2018-07-09]
+25. Elasticsearch [Astroleander, 2018-07-09]
+26. Apache Solr [Astroleander, 2018-07-09]
+27. Apache Lucene [Astroleander, 2018-07-09]
 
 V. Advanced Topics
-28. Advanced Schema
+28. Advanced Schema [Astroleander, 2018-07-10]
 29. Eventually-Consistent Storage Backends
 30. Failure & Recovery
 31. Index Management
